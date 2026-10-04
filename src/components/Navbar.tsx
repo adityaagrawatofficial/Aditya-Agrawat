@@ -21,11 +21,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate, onWork
 
   const navLinks = [
     { label: 'About Aditya Agrawat', href: '/about-aditya-agrawat', isRoute: true },
-    { label: 'Services', href: '#services', isRoute: false },
-    { label: 'Selected Work', href: '#work', isRoute: false },
-    { label: 'Team', href: '#team', isRoute: false },
-    { label: 'Partnership', href: '#partnerships', isRoute: false },
-    { label: 'Contact', href: '#contact', isRoute: false },
+    { label: 'Services', href: '/services', isRoute: true },
+    { label: 'Projects', href: '/projects', isRoute: true },
+    { label: 'FAQ', href: '/faq', isRoute: true },
+    { label: 'Contact', href: '/contact', isRoute: true },
   ];
 
   const handleLinkClick = (e: React.MouseEvent, item: { label: string; href: string; isRoute: boolean }) => {
@@ -103,7 +102,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate, onWork
             onClick={onWorkWithTeamClick}
             className="group inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-black bg-[#bef264] hover:bg-[#d9f99d] transition-all duration-200 active:scale-[0.98] whitespace-nowrap cursor-pointer shadow-sm shadow-[#bef264]/10"
           >
-            <span>Work With My Team</span>
+            <span>Work With Me</span>
             <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </button>
         </div>

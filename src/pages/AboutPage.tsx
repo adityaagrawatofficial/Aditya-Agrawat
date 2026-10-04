@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   ArrowLeft,
   ArrowRight,
@@ -103,18 +104,14 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigateHome, onStartPro
       <div className="max-w-4xl mx-auto px-6 sm:px-8">
         {/* Breadcrumb Navigation with internal SEO link to homepage */}
         <nav aria-label="Breadcrumb" className="mb-10 flex items-center gap-2 text-xs font-mono-num text-neutral-400">
-          <a
-            href="/"
-            onClick={(e) => {
-              e.preventDefault();
-              onNavigateHome();
-            }}
+          <Link
+            to="/"
             className="hover:text-[#bef264] transition-colors cursor-pointer flex items-center gap-1.5"
             title="Return to Aditya Agrawat homepage"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Aditya Agrawat</span>
-          </a>
+          </Link>
           <span className="text-neutral-600">/</span>
           <span className="text-white">About Aditya Agrawat</span>
         </nav>
@@ -141,28 +138,26 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigateHome, onStartPro
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <a
-                  href="/#contact"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onStartProjectClick();
-                  }}
+                <Link
+                  to="/contact"
                   className="inline-flex items-center gap-2 px-6 py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-black bg-[#bef264] hover:bg-[#d9f99d] transition-all cursor-pointer shadow-lg shadow-[#bef264]/10"
                 >
                   <span>Work With Me</span>
                   <ArrowUpRight className="w-4 h-4" />
-                </a>
-                <a
-                  href="/#work"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onNavigateHome('#work');
-                  }}
+                </Link>
+                <Link
+                  to="/projects"
                   className="inline-flex items-center gap-2 px-6 py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer"
                 >
                   <span>Explore My Work</span>
                   <ArrowRight className="w-4 h-4" />
-                </a>
+                </Link>
+                <Link
+                  to="/services"
+                  className="inline-flex items-center gap-2 px-5 py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-neutral-400 hover:text-white transition-colors cursor-pointer"
+                >
+                  <span>View Services →</span>
+                </Link>
               </div>
             </div>
 
@@ -244,28 +239,18 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigateHome, onStartPro
             What I Do
           </h2>
           <p className="text-sm sm:text-base text-neutral-400 font-body mb-8">
-            Aditya leads projects across six fundamental areas of the digital ecosystem. You can also explore case studies in{' '}
-            <a
-              href="/#work"
-              onClick={(e) => {
-                e.preventDefault();
-                onNavigateHome('#work');
-              }}
-              className="text-[#bef264] hover:underline cursor-pointer"
-            >
-              Selected Work
-            </a>{' '}
-            or connect directly to{' '}
-            <a
-              href="/#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                onStartProjectClick();
-              }}
-              className="text-[#bef264] hover:underline cursor-pointer font-medium"
-            >
+            Aditya leads projects across six fundamental areas of the digital ecosystem. You can explore full breakdowns in{' '}
+            <Link to="/services" className="text-[#bef264] hover:underline cursor-pointer">
+              Services
+            </Link>
+            , inspect execution domains in{' '}
+            <Link to="/projects" className="text-[#bef264] hover:underline cursor-pointer">
+              Projects
+            </Link>
+            , or initiate an engagement to{' '}
+            <Link to="/contact" className="text-[#bef264] hover:underline cursor-pointer font-medium">
               Work With Me
-            </a>
+            </Link>
             :
           </p>
 
@@ -417,29 +402,28 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigateHome, onStartPro
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
-              <a
-                href="/#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  onStartProjectClick();
-                }}
+              <Link
+                to="/contact"
                 className="inline-flex items-center gap-2.5 px-8 py-4 text-xs sm:text-sm font-semibold uppercase tracking-wider text-black bg-[#bef264] hover:bg-[#d9f99d] transition-all cursor-pointer shadow-lg shadow-[#bef264]/10"
               >
                 <span>Work With Me</span>
                 <ArrowUpRight className="w-4 h-4" />
-              </a>
+              </Link>
 
-              <a
-                href="/#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  onStartProjectClick();
-                }}
+              <Link
+                to="/contact"
                 className="inline-flex items-center gap-2 px-6 py-4 text-xs sm:text-sm font-semibold uppercase tracking-wider text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer"
               >
                 <span>Contact Aditya Agrawat</span>
                 <ArrowRight className="w-4 h-4" />
-              </a>
+              </Link>
+
+              <Link
+                to="/services"
+                className="inline-flex items-center gap-2 px-6 py-4 text-xs sm:text-sm font-semibold uppercase tracking-wider text-neutral-400 hover:text-white transition-colors cursor-pointer"
+              >
+                <span>Explore Services</span>
+              </Link>
             </div>
 
             <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-neutral-400 font-mono-num">
@@ -461,17 +445,13 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigateHome, onStartPro
 
         {/* Back to Home Link */}
         <div className="mt-12 text-center">
-          <a
-            href="/"
-            onClick={(e) => {
-              e.preventDefault();
-              onNavigateHome();
-            }}
+          <Link
+            to="/"
             className="inline-flex items-center gap-2 text-xs font-mono-num text-neutral-400 hover:text-white transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Return to Aditya Agrawat Homepage</span>
-          </a>
+          </Link>
         </div>
       </div>
     </article>
