@@ -17,9 +17,15 @@ import { Toast } from './components/Toast';
 import { AboutPage } from './pages/AboutPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
+const normalizePath = (path: string): string => {
+  if (!path) return '/';
+  const clean = path.split('?')[0].split('#')[0].replace(/\/+$/, '');
+  return clean === '' ? '/' : clean;
+};
+
 export default function App() {
   const [currentPath, setCurrentPath] = useState<string>(() => {
-    return window.location.pathname || '/';
+    return normalizePath(window.location.pathname);
   });
   const [selectedPathway, setSelectedPathway] = useState<string>('have-business');
   const [preselectedInterest, setPreselectedInterest] = useState<string>('Digital Marketing');
@@ -218,16 +224,17 @@ export default function App() {
   // Handle browser back/forward buttons
   useEffect(() => {
     const handlePopState = () => {
-      setCurrentPath(window.location.pathname || '/');
+      setCurrentPath(normalizePath(window.location.pathname));
     };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   const navigate = (path: string, hash?: string) => {
-    if (path !== currentPath) {
+    const targetPath = normalizePath(path);
+    if (targetPath !== currentPath) {
       window.history.pushState({}, '', path);
-      setCurrentPath(path);
+      setCurrentPath(targetPath);
     }
     if (hash) {
       setTimeout(() => {
