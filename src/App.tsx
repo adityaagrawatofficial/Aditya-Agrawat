@@ -25,12 +25,191 @@ export default function App() {
   const [preselectedInterest, setPreselectedInterest] = useState<string>('Digital Marketing');
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  // Sync document title dynamically based on route
+  // Synchronize document title, meta descriptions, canonical URLs, OG tags, and Schema.org JSON-LD
   useEffect(() => {
+    const updateMetaTag = (selector: string, attribute: string, value: string) => {
+      let el = document.querySelector(selector);
+      if (!el) {
+        el = document.createElement('meta');
+        if (selector.includes('property=')) {
+          const propName = selector.match(/property="([^"]+)"/)?.[1];
+          if (propName) el.setAttribute('property', propName);
+        } else if (selector.includes('name=')) {
+          const nameValue = selector.match(/name="([^"]+)"/)?.[1];
+          if (nameValue) el.setAttribute('name', nameValue);
+        }
+        document.head.appendChild(el);
+      }
+      el.setAttribute(attribute, value);
+    };
+
+    const updateCanonical = (url: string) => {
+      let el = document.querySelector('link[rel="canonical"]');
+      if (!el) {
+        el = document.createElement('link');
+        el.setAttribute('rel', 'canonical');
+        document.head.appendChild(el);
+      }
+      el.setAttribute('href', url);
+    };
+
+    const updateStructuredData = (schemaObj: object) => {
+      let script = document.getElementById('dynamic-jsonld') as HTMLScriptElement | null;
+      if (!script) {
+        script = document.createElement('script');
+        script.id = 'dynamic-jsonld';
+        script.type = 'application/ld+json';
+        document.head.appendChild(script);
+      }
+      script.textContent = JSON.stringify(schemaObj);
+    };
+
     if (currentPath === '/about-aditya-agrawat') {
-      document.title = 'Who Is Aditya Agrawat? | Digital Marketer & Entrepreneur';
+      const pageTitle = 'Aditya Agrawat | About, Digital Marketing & Entrepreneurship';
+      const pageDescription =
+        'Learn about Aditya Agrawat, a digital marketer, entrepreneur and digital builder working across digital marketing, websites, applications, SEO, content, social media and digital products.';
+      const pageCanonical = 'https://aditya-agrawat.onrender.com/about-aditya-agrawat';
+
+      document.title = pageTitle;
+      updateMetaTag('meta[name="description"]', 'content', pageDescription);
+      updateCanonical(pageCanonical);
+
+      // Open Graph & Twitter
+      updateMetaTag('meta[property="og:title"]', 'content', pageTitle);
+      updateMetaTag('meta[property="og:description"]', 'content', pageDescription);
+      updateMetaTag('meta[property="og:url"]', 'content', pageCanonical);
+      updateMetaTag('meta[name="twitter:title"]', 'content', pageTitle);
+      updateMetaTag('meta[name="twitter:description"]', 'content', pageDescription);
+
+      // Dedicated JSON-LD: Person, AboutPage, WebPage, BreadcrumbList
+      updateStructuredData({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'Person',
+            '@id': 'https://aditya-agrawat.onrender.com/#person',
+            name: 'Aditya Agrawat',
+            url: 'https://aditya-agrawat.onrender.com/',
+            jobTitle: 'Digital Marketer, Entrepreneur & Digital Builder',
+            description:
+              'A digital marketer, entrepreneur and digital builder working across digital marketing, website development, applications, content, social media, SEO and digital products.',
+            email: 'adityaagrawatofficial@gmail.com',
+            nationality: {
+              '@type': 'Country',
+              name: 'India',
+            },
+            knowsAbout: [
+              'Digital Marketing',
+              'Website Development',
+              'App Development',
+              'SEO',
+              'Content Strategy',
+              'Social Media',
+              'YouTube Promotion',
+              'Digital Products',
+              'Digital Strategy',
+              'Online Business',
+            ],
+          },
+          {
+            '@type': ['AboutPage', 'WebPage'],
+            '@id': 'https://aditya-agrawat.onrender.com/about-aditya-agrawat#webpage',
+            url: pageCanonical,
+            name: pageTitle,
+            description: pageDescription,
+            mainEntity: {
+              '@id': 'https://aditya-agrawat.onrender.com/#person',
+            },
+            isPartOf: {
+              '@type': 'WebSite',
+              '@id': 'https://aditya-agrawat.onrender.com/#website',
+              url: 'https://aditya-agrawat.onrender.com/',
+              name: 'Aditya Agrawat',
+              publisher: {
+                '@id': 'https://aditya-agrawat.onrender.com/#person',
+              },
+            },
+            breadcrumb: {
+              '@id': 'https://aditya-agrawat.onrender.com/about-aditya-agrawat#breadcrumb',
+            },
+          },
+          {
+            '@type': 'BreadcrumbList',
+            '@id': 'https://aditya-agrawat.onrender.com/about-aditya-agrawat#breadcrumb',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://aditya-agrawat.onrender.com/',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'About Aditya Agrawat',
+                item: pageCanonical,
+              },
+            ],
+          },
+        ],
+      });
     } else if (currentPath === '/') {
-      document.title = 'Aditya Agrawat | Digital Marketer, Entrepreneur & Digital Builder';
+      const homeTitle = 'Aditya Agrawat | Digital Marketer, Entrepreneur & Digital Builder';
+      const homeDescription =
+        'Aditya Agrawat is an Indian digital marketer, entrepreneur and digital builder working across digital marketing, websites, applications, content, social media and digital products with a 48+ member team.';
+      const homeCanonical = 'https://aditya-agrawat.onrender.com/';
+
+      document.title = homeTitle;
+      updateMetaTag('meta[name="description"]', 'content', homeDescription);
+      updateCanonical(homeCanonical);
+
+      // Open Graph & Twitter
+      updateMetaTag('meta[property="og:title"]', 'content', homeTitle);
+      updateMetaTag('meta[property="og:description"]', 'content', homeDescription);
+      updateMetaTag('meta[property="og:url"]', 'content', homeCanonical);
+      updateMetaTag('meta[name="twitter:title"]', 'content', homeTitle);
+      updateMetaTag('meta[name="twitter:description"]', 'content', homeDescription);
+
+      // Homepage JSON-LD: Person & WebSite
+      updateStructuredData({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'Person',
+            '@id': 'https://aditya-agrawat.onrender.com/#person',
+            name: 'Aditya Agrawat',
+            url: 'https://aditya-agrawat.onrender.com/',
+            jobTitle: 'Digital Marketer, Entrepreneur & Digital Builder',
+            description:
+              'A digital marketer, entrepreneur and digital builder working across digital marketing, website development, applications, content, social media, SEO and digital products.',
+            email: 'adityaagrawatofficial@gmail.com',
+            nationality: {
+              '@type': 'Country',
+              name: 'India',
+            },
+            knowsAbout: [
+              'Digital Marketing',
+              'Website Development',
+              'App Development',
+              'Content & Social Media Promotion',
+              'SEO & Blogging',
+              'Digital Products',
+              'Online Entrepreneurship',
+            ],
+          },
+          {
+            '@type': 'WebSite',
+            '@id': 'https://aditya-agrawat.onrender.com/#website',
+            url: 'https://aditya-agrawat.onrender.com/',
+            name: 'Aditya Agrawat',
+            description:
+              'A digital marketer, entrepreneur and digital builder working across digital marketing, website development, applications, content, social media, SEO and digital products.',
+            publisher: {
+              '@id': 'https://aditya-agrawat.onrender.com/#person',
+            },
+          },
+        ],
+      });
     } else {
       document.title = '404 - Page Not Found | Aditya Agrawat';
     }
@@ -88,14 +267,13 @@ export default function App() {
   };
 
   const handleServiceSelect = (serviceTitle: string) => {
-    // Map service title to contact dropdown item
     const interestMap: Record<string, string> = {
       'Digital Marketing': 'Digital Marketing',
       'Website Development': 'Website',
       'App Development': 'Application',
       'Content & Social Media': 'Content & Social Media',
       'SEO & Blogging': 'SEO & Blogging',
-      'Digital Products': 'Digital Product'
+      'Digital Products': 'Digital Product',
     };
     const mapped = interestMap[serviceTitle] || serviceTitle;
     setPreselectedInterest(mapped);
@@ -168,7 +346,8 @@ export default function App() {
             <HaveAnIdea
               onSubmitIdeaClick={() => scrollToSection('contact')}
               onTalkToTeamClick={() => {
-                window.location.href = 'mailto:adityaagrawatofficial@gmail.com?subject=Discussion%20with%20Aditya%20Agrawat%20Team';
+                window.location.href =
+                  'mailto:adityaagrawatofficial@gmail.com?subject=Discussion%20with%20Aditya%20Agrawat%20Team';
               }}
             />
 

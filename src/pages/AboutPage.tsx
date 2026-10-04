@@ -1,5 +1,21 @@
 import React from 'react';
-import { ArrowLeft, ArrowUpRight, CheckCircle2, Globe, Users, Code, TrendingUp, Tv, Search, Layers, Mail } from 'lucide-react';
+import {
+  ArrowLeft,
+  ArrowRight,
+  ArrowUpRight,
+  CheckCircle2,
+  Users,
+  Code,
+  TrendingUp,
+  Tv,
+  Search,
+  Layers,
+  Sparkles,
+  Mail,
+  Shield,
+  Compass,
+  Check
+} from 'lucide-react';
 import { SITE_DATA } from '../data/siteData';
 
 interface AboutPageProps {
@@ -8,238 +24,391 @@ interface AboutPageProps {
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({ onNavigateHome, onStartProjectClick }) => {
+  const whatIDoCards = [
+    {
+      title: 'Digital Marketing',
+      desc: 'Formulating and managing performance marketing campaigns, search acquisition, conversion funnels, and data-backed audience growth.',
+      icon: TrendingUp,
+    },
+    {
+      title: 'Website Development',
+      desc: 'Engineering modern, ultra-fast websites and corporate portals built with contemporary frameworks, responsive UX, and high brand aesthetic.',
+      icon: Code,
+    },
+    {
+      title: 'App Development',
+      desc: 'Architecting practical web and mobile applications designed to resolve concrete business needs with clean interfaces and stable cloud backends.',
+      icon: Layers,
+    },
+    {
+      title: 'SEO & Content',
+      desc: 'Establishing compound search engine authority through clean technical indexing, semantic hierarchy, and structured long-form editorial publishing.',
+      icon: Search,
+    },
+    {
+      title: 'Social Media & YouTube Promotion',
+      desc: 'Developing audience retention strategies, high-click packaging, long-form YouTube programming, and cross-channel organic distribution.',
+      icon: Tv,
+    },
+    {
+      title: 'Digital Products',
+      desc: 'Incubating, designing, and launching digital products, self-service software utilities, and online platforms from concept through monetization.',
+      icon: Sparkles,
+    },
+  ];
+
+  const howIWorkSteps = [
+    {
+      step: '01',
+      title: '01 — Understand the Idea',
+      desc: 'Analyzing your vision, target audience, market dynamics, and the core opportunity you are building toward.',
+    },
+    {
+      step: '02',
+      title: '02 — Plan the Strategy',
+      desc: 'Mapping the technical stack, brand positioning, acquisition architecture, and key execution milestones.',
+    },
+    {
+      step: '03',
+      title: '03 — Build the Solution',
+      desc: 'Developing high-performance code, compelling editorial assets, and intuitive user experiences with high craftsmanship.',
+    },
+    {
+      step: '04',
+      title: '04 — Launch & Improve',
+      desc: 'Deploying smoothly to production, ensuring cross-platform stability, and gathering real user behavioral signals.',
+    },
+    {
+      step: '05',
+      title: '05 — Measure & Scale',
+      desc: 'Optimizing conversion funnels, tracking analytics, and scaling distribution to generate long-term digital impact.',
+    },
+  ];
+
+  const areasOfExpertise = [
+    'Digital Marketing',
+    'Website Development',
+    'App Development',
+    'SEO',
+    'Content Strategy',
+    'Social Media',
+    'YouTube Promotion',
+    'Digital Products',
+    'Digital Strategy',
+    'Online Business',
+  ];
+
   return (
     <article className="pt-32 pb-24 sm:pt-40 sm:pb-32 bg-[#080808] text-[#f4f4f5]">
       <div className="max-w-4xl mx-auto px-6 sm:px-8">
-        {/* Breadcrumb / Back to Home */}
-        <nav aria-label="Breadcrumb" className="mb-8">
+        {/* Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumb" className="mb-10 flex items-center gap-2 text-xs font-mono-num text-neutral-400">
           <button
             type="button"
             onClick={() => onNavigateHome()}
-            className="inline-flex items-center gap-2 text-xs font-mono-num text-neutral-400 hover:text-[#bef264] transition-colors cursor-pointer"
+            className="hover:text-[#bef264] transition-colors cursor-pointer flex items-center gap-1.5"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Back to Main Hub</span>
+            <span>Home</span>
           </button>
+          <span className="text-neutral-600">/</span>
+          <span className="text-white">About Aditya Agrawat</span>
         </nav>
 
-        {/* Primary Page Header */}
-        <header className="mb-14 pb-10 border-b border-white/10">
-          <div className="text-xs font-mono-num font-semibold uppercase tracking-widest text-[#bef264] mb-3">
-            DETAILED PROFILE &amp; PROFESSIONAL BACKGROUND
+        {/* 2. HERO SECTION */}
+        <header className="mb-16 sm:mb-20 pb-12 border-b border-white/10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div className="lg:col-span-8">
+              <div className="inline-flex items-center gap-2 text-xs font-mono-num font-semibold uppercase tracking-widest text-[#bef264] mb-4">
+                <span className="w-2 h-2 rounded-full bg-[#bef264]" />
+                <span>ABOUT ADITYA AGRAWAT</span>
+              </div>
+
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white font-syne mb-3 leading-[1.04]">
+                Aditya Agrawat
+              </h1>
+
+              <div className="text-lg sm:text-2xl font-semibold text-[#bef264] font-syne mb-6">
+                Digital Marketer · Entrepreneur · Digital Builder
+              </div>
+
+              <p className="text-lg sm:text-xl text-neutral-300 font-body leading-relaxed max-w-2xl">
+                Aditya Agrawat is a digital marketer, entrepreneur and digital builder working across digital marketing, website development, applications, content, social media, SEO and digital products.
+              </p>
+
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <button
+                  type="button"
+                  onClick={onStartProjectClick}
+                  className="inline-flex items-center gap-2 px-6 py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-black bg-[#bef264] hover:bg-[#d9f99d] transition-all cursor-pointer shadow-lg shadow-[#bef264]/10"
+                >
+                  <span>Work With Me</span>
+                  <ArrowUpRight className="w-4 h-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => onNavigateHome('#work')}
+                  className="inline-flex items-center gap-2 px-6 py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer"
+                >
+                  <span>Explore My Work</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* Subtle premium visual badge consistent with homepage */}
+            <div className="lg:col-span-4 mt-4 lg:mt-0">
+              <div className="p-6 bg-[#0c0c0e] border border-white/10 relative overflow-hidden group">
+                <div className="text-[11px] font-mono-num text-[#bef264] uppercase tracking-wider mb-2">
+                  OFFICIAL IDENTITY
+                </div>
+                <div className="text-xl font-extrabold text-white font-syne mb-2">
+                  ADITYA AGRAWAT
+                </div>
+                <p className="text-xs text-neutral-400 font-body mb-4">
+                  Directing end-to-end execution across technology, marketing and digital business ventures.
+                </p>
+                <div className="pt-3 border-t border-white/5 flex items-center justify-between text-xs font-mono-num text-neutral-400">
+                  <span>SCALE:</span>
+                  <span className="text-[#bef264] font-bold">48+ SPECIALISTS</span>
+                </div>
+                {/* Ambient glow hairline */}
+                <div className="absolute top-0 right-0 w-24 h-24 bg-[#bef264]/5 blur-2xl pointer-events-none" />
+              </div>
+            </div>
           </div>
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white font-syne mb-6 leading-[1.08]">
-            Who Is Aditya Agrawat?
-          </h1>
-          <p className="text-xl sm:text-2xl text-neutral-300 font-medium font-body leading-relaxed">
-            Digital Marketer, Entrepreneur &amp; Digital Builder. Leading cross-disciplinary digital initiatives with a 48+ member team.
-          </p>
         </header>
 
-        {/* 1. Who is Aditya Agrawat? */}
-        <section className="mb-16">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white font-syne mb-5 flex items-center gap-3">
-            <span className="text-xs font-mono-num text-[#bef264]">01</span>
-            <span>Who is Aditya Agrawat?</span>
+        {/* 3. WHO IS ADITYA AGRAWAT? */}
+        <section aria-labelledby="section-who-is-aditya" className="mb-20">
+          <div className="flex items-center gap-2 text-xs font-mono-num text-[#bef264] uppercase tracking-wider mb-2">
+            <span>01</span>
+            <span className="text-neutral-600">·</span>
+            <span>PROFILE &amp; BACKGROUND</span>
+          </div>
+          <h2 id="section-who-is-aditya" className="text-2xl sm:text-4xl font-bold text-white font-syne mb-6">
+            Who Is Aditya Agrawat?
           </h2>
-          <div className="space-y-4 text-base sm:text-lg text-neutral-300 font-body leading-relaxed">
+
+          <div className="space-y-5 text-base sm:text-lg text-neutral-300 font-body leading-relaxed">
+            <div className="p-6 sm:p-8 bg-[#0c0c0f] border-l-2 border-[#bef264] border-y border-r border-white/5">
+              <p className="text-white font-medium">
+                Aditya Agrawat is an Indian digital marketer, entrepreneur and digital builder who operates at the intersection of digital marketing, technology, content and online business.
+              </p>
+            </div>
+
             <p>
-              Aditya Agrawat is an Indian digital marketer, entrepreneur and digital builder working across technology, digital marketing, content and online businesses. Operating from India with a global execution footprint, he focuses on turning strategic concepts into robust, revenue-generating digital realities.
+              His background is rooted in understanding how technical engineering and modern audience acquisition reinforce one another. Rather than approaching websites, marketing campaigns, and applications as disconnected efforts, Aditya focuses on unifying them into cohesive, self-sustaining digital systems.
             </p>
+
             <p>
-              Rather than treating technical development and marketing as isolated functions, Aditya unites them into a cohesive digital discipline. His philosophy centers on practical execution: software must be engineered to scale, and marketing campaigns must be grounded in measurable commercial outcomes.
+              From conceptualizing digital products and writing technical specifications to orchestrating multi-channel search optimization, YouTube video distribution, and conversion architecture, his daily work is centered on building practical digital assets that generate real-world commercial results.
             </p>
+
             <p>
-              Working alongside a dedicated 48+ member team across marketing, content, design, development, promotion and operations, Aditya provides comprehensive leadership for brands, founders, and digital ventures.
+              Operating with an execution-driven mindset, Aditya combines long-term organic compounding through SEO and content publishing with agile engineering and performance marketing.
             </p>
           </div>
         </section>
 
-        {/* 2. What does Aditya Agrawat do? */}
-        <section className="mb-16">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white font-syne mb-5 flex items-center gap-3">
-            <span className="text-xs font-mono-num text-[#bef264]">02</span>
-            <span>What does Aditya Agrawat do?</span>
+        {/* 4. WHAT I DO */}
+        <section aria-labelledby="section-what-i-do" className="mb-20">
+          <div className="flex items-center gap-2 text-xs font-mono-num text-[#bef264] uppercase tracking-wider mb-2">
+            <span>02</span>
+            <span className="text-neutral-600">·</span>
+            <span>CORE SERVICES &amp; PRACTICES</span>
+          </div>
+          <h2 id="section-what-i-do" className="text-2xl sm:text-4xl font-bold text-white font-syne mb-4">
+            What I Do
           </h2>
-          <p className="text-base sm:text-lg text-neutral-300 font-body leading-relaxed mb-6">
-            Aditya Agrawat orchestrates the entire lifecycle of modern digital assets. From early-stage product roadmaps to technical engineering and multi-channel audience growth, his scope of work spans six key execution pillars:
+          <p className="text-sm sm:text-base text-neutral-400 font-body mb-8">
+            Aditya leads projects across six fundamental areas of the digital ecosystem:
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="p-5 bg-[#0e0e12] border border-white/5">
-              <span className="text-xs font-mono-num text-[#bef264] block mb-1">Pillar 1</span>
-              <h3 className="text-base font-bold text-white font-syne mb-1">Digital Marketing</h3>
-              <p className="text-xs text-neutral-400">Search strategy, paid acquisition, and conversion funnels.</p>
-            </div>
-            <div className="p-5 bg-[#0e0e12] border border-white/5">
-              <span className="text-xs font-mono-num text-[#bef264] block mb-1">Pillar 2</span>
-              <h3 className="text-base font-bold text-white font-syne mb-1">Web &amp; Application Development</h3>
-              <p className="text-xs text-neutral-400">Custom web architecture, mobile apps, and developer toolchains.</p>
-            </div>
-            <div className="p-5 bg-[#0e0e12] border border-white/5">
-              <span className="text-xs font-mono-num text-[#bef264] block mb-1">Pillar 3</span>
-              <h3 className="text-base font-bold text-white font-syne mb-1">Content &amp; Social Media</h3>
-              <p className="text-xs text-neutral-400">YouTube programming, video syndication, and editorial reach.</p>
-            </div>
-            <div className="p-5 bg-[#0e0e12] border border-white/5">
-              <span className="text-xs font-mono-num text-[#bef264] block mb-1">Pillar 4</span>
-              <h3 className="text-base font-bold text-white font-syne mb-1">SEO &amp; Digital Products</h3>
-              <p className="text-xs text-neutral-400">Topical search authority, SaaS utilities, and venture incubation.</p>
-            </div>
+            {whatIDoCards.map((card) => {
+              const Icon = card.icon;
+              return (
+                <div
+                  key={card.title}
+                  className="p-6 bg-[#0c0c0f] border border-white/[0.08] hover:border-white/20 transition-all flex flex-col justify-between group"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <Icon className="w-5 h-5 text-[#bef264]" />
+                      <span className="text-[11px] font-mono-num text-neutral-500">EXPERTISE</span>
+                    </div>
+                    <h3 className="text-lg font-bold text-white font-syne mb-2 group-hover:text-[#bef264] transition-colors">
+                      {card.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-neutral-300 font-body leading-relaxed">
+                      {card.desc}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </section>
 
-        {/* 3. Digital Marketing */}
-        <section className="mb-16">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white font-syne mb-5 flex items-center gap-3">
-            <TrendingUp className="w-5 h-5 text-[#bef264]" />
-            <span>Digital Marketing</span>
-          </h2>
-          <div className="space-y-4 text-sm sm:text-base text-neutral-300 font-body leading-relaxed">
-            <p>
-              In digital marketing, Aditya Agrawat emphasizes measurable conversion systems over vanity impressions. His approach aligns paid search and paid social campaigns with optimized landing pages, precise tracking infrastructure, and deep audience segmentation.
-            </p>
-            <p>
-              By continuously evaluating attribution data and user journey metrics, his marketing workflows help businesses generate sustainable inbound discovery and customer retention without wasted advertising spend.
-            </p>
+        {/* 5. AREAS OF EXPERTISE */}
+        <section aria-labelledby="section-areas-of-expertise" className="mb-20">
+          <div className="flex items-center gap-2 text-xs font-mono-num text-[#bef264] uppercase tracking-wider mb-2">
+            <span>03</span>
+            <span className="text-neutral-600">·</span>
+            <span>COMPETENCY DOMAINS</span>
           </div>
-        </section>
-
-        {/* 4. Website & Application Development */}
-        <section className="mb-16">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white font-syne mb-5 flex items-center gap-3">
-            <Code className="w-5 h-5 text-[#bef264]" />
-            <span>Website &amp; Application Development</span>
+          <h2 id="section-areas-of-expertise" className="text-2xl sm:text-4xl font-bold text-white font-syne mb-4">
+            Areas of Expertise
           </h2>
-          <div className="space-y-4 text-sm sm:text-base text-neutral-300 font-body leading-relaxed">
-            <p>
-              Modern digital brands need more than surface-level templates. Aditya directs the engineering of bespoke websites and applications using contemporary full-stack technologies like TypeScript, React, and modular cloud APIs.
-            </p>
-            <p>
-              Prioritizing ultra-fast load times, clean typographic hierarchy, and responsive layouts, each web build is crafted to deliver seamless performance on mobile, tablet, and desktop environments.
-            </p>
-          </div>
-        </section>
-
-        {/* 5. Content & Social Media */}
-        <section className="mb-16">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white font-syne mb-5 flex items-center gap-3">
-            <Tv className="w-5 h-5 text-[#bef264]" />
-            <span>Content &amp; Social Media</span>
-          </h2>
-          <div className="space-y-4 text-sm sm:text-base text-neutral-300 font-body leading-relaxed">
-            <p>
-              Organic distribution is central to sustainable digital growth. Aditya Agrawat oversees content frameworks and YouTube channel operations that translate complex concepts into high-retention video narratives.
-            </p>
-            <p>
-              Through systematic short-form packaging, long-form video programming, and community engagement loops, his media systems cultivate dedicated audiences and establish authentic brand presence across networks.
-            </p>
-          </div>
-        </section>
-
-        {/* 6. SEO & Blogging */}
-        <section className="mb-16">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white font-syne mb-5 flex items-center gap-3">
-            <Search className="w-5 h-5 text-[#bef264]" />
-            <span>SEO &amp; Blogging</span>
-          </h2>
-          <div className="space-y-4 text-sm sm:text-base text-neutral-300 font-body leading-relaxed">
-            <p>
-              Search engines reward clarity, technical rigor, and topical depth. Aditya approaches search engine optimization (SEO) by building authoritative content hubs and maintaining strict technical hygiene.
-            </p>
-            <p>
-              His work includes architectural site indexing, Schema.org structured data, and content publishing strategies that generate compound organic traffic over months and years.
-            </p>
-          </div>
-        </section>
-
-        {/* 7. Digital Products */}
-        <section className="mb-16">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white font-syne mb-5 flex items-center gap-3">
-            <Layers className="w-5 h-5 text-[#bef264]" />
-            <span>Digital Products</span>
-          </h2>
-          <div className="space-y-4 text-sm sm:text-base text-neutral-300 font-body leading-relaxed">
-            <p>
-              Beyond service client engagements, Aditya focuses on incubating commercial digital products and online businesses. These ventures translate recurring market needs into intuitive digital tools, web platforms, and automated utilities.
-            </p>
-            <p>
-              From validation and MVP prototyping to monetization and user onboarding, each product is built with clear unit economics and functional elegance.
-            </p>
-          </div>
-        </section>
-
-        {/* 8. The 48+ Member Team */}
-        <section className="mb-16 p-8 bg-[#0c0c0e] border border-white/10">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white font-syne mb-4 flex items-center gap-3">
-            <Users className="w-6 h-6 text-[#bef264]" />
-            <span>The 48+ Member Team</span>
-          </h2>
-          <blockquote className="text-base sm:text-lg text-neutral-200 font-body italic border-l-2 border-[#bef264] pl-4 mb-4">
-            &ldquo;Great digital work isn&apos;t built alone. A 48+ member team works across technology, marketing, content, design, promotion and operations.&rdquo;
-          </blockquote>
-          <p className="text-sm text-neutral-300 leading-relaxed font-body mb-6">
-            Aditya Agrawat leads a distributed, multidisciplinary workforce. With specialists across engineering, content production, graphic design, search optimization, and campaign operations, the team delivers comprehensive digital execution without compromising speed or craftsmanship.
+          <p className="text-sm sm:text-base text-neutral-400 font-body mb-6">
+            Aditya Agrawat brings direct strategic and technical experience across key digital disciplines:
           </p>
-          <div className="flex flex-wrap gap-2 text-xs font-mono-num text-neutral-400">
-            <span className="p-2 bg-white/5 border border-white/5">MARKETING</span>
-            <span className="p-2 bg-white/5 border border-white/5">CONTENT</span>
-            <span className="p-2 bg-white/5 border border-white/5">DESIGN</span>
-            <span className="p-2 bg-white/5 border border-white/5">DEVELOPMENT</span>
-            <span className="p-2 bg-white/5 border border-white/5">PROMOTION</span>
-            <span className="p-2 bg-white/5 border border-white/5">OPERATIONS</span>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            {areasOfExpertise.map((item) => (
+              <div
+                key={item}
+                className="flex items-center gap-2.5 p-3.5 bg-[#0c0c0f] border border-white/5 hover:border-white/20 transition-all text-xs sm:text-sm font-medium text-neutral-200"
+              >
+                <CheckCircle2 className="w-4 h-4 text-[#bef264] shrink-0" />
+                <span>{item}</span>
+              </div>
+            ))}
           </div>
         </section>
 
-        {/* 9. Partnerships & Collaborations */}
-        <section className="mb-16">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white font-syne mb-5 flex items-center gap-3">
-            <Globe className="w-5 h-5 text-[#bef264]" />
-            <span>Partnerships &amp; Collaborations</span>
-          </h2>
-          <div className="space-y-4 text-sm sm:text-base text-neutral-300 font-body leading-relaxed mb-6">
-            <p>
-              Aditya Agrawat is actively open to collaborating with entrepreneurs, businesses, content creators, and digital teams. Whether partnering on long-term venture building, audience monetization, or technical software execution, he values shared conviction and clear alignment.
-            </p>
+        {/* 6. HOW I WORK */}
+        <section aria-labelledby="section-how-i-work" className="mb-20">
+          <div className="flex items-center gap-2 text-xs font-mono-num text-[#bef264] uppercase tracking-wider mb-2">
+            <span>04</span>
+            <span className="text-neutral-600">·</span>
+            <span>STRATEGIC METHODOLOGY</span>
           </div>
+          <h2 id="section-how-i-work" className="text-2xl sm:text-4xl font-bold text-white font-syne mb-4">
+            How I Work
+          </h2>
+          <p className="text-sm sm:text-base text-neutral-400 font-body mb-8">
+            A structured, transparent 5-step process ensures digital initiatives move from initial vision to measurable scale without friction:
+          </p>
+
+          <div className="space-y-4">
+            {howIWorkSteps.map((step) => (
+              <div
+                key={step.step}
+                className="p-6 bg-[#0c0c0f] border border-white/[0.08] flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6"
+              >
+                <span className="text-xl sm:text-2xl font-extrabold text-[#bef264] font-mono-num shrink-0">
+                  {step.step}
+                </span>
+                <div>
+                  <h3 className="text-base sm:text-lg font-bold text-white font-syne mb-1.5">
+                    {step.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-neutral-300 font-body leading-relaxed">
+                    {step.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 7. THE TEAM BEHIND THE WORK */}
+        <section aria-labelledby="section-my-team" className="mb-20">
+          <div className="flex items-center gap-2 text-xs font-mono-num text-[#bef264] uppercase tracking-wider mb-2">
+            <span>05</span>
+            <span className="text-neutral-600">·</span>
+            <span>COLLECTIVE SCALE</span>
+          </div>
+          <h2 id="section-my-team" className="text-2xl sm:text-4xl font-bold text-white font-syne mb-4">
+            The Team Behind the Work
+          </h2>
+
+          <div className="p-8 bg-[#0c0c0f] border border-white/10 relative overflow-hidden">
+            <div className="flex items-start gap-4 mb-4">
+              <Users className="w-6 h-6 text-[#bef264] shrink-0 mt-1" />
+              <div>
+                <blockquote className="text-lg sm:text-xl font-medium text-white font-body italic mb-3">
+                  &ldquo;Aditya works with a 48+ member team across different digital, creative and execution-focused roles.&rdquo;
+                </blockquote>
+                <p className="text-xs sm:text-sm text-neutral-300 font-body leading-relaxed">
+                  Great digital work requires diverse technical and creative skills. By coordinating an agile team across frontend and backend development, copywriting, video editing, graphics, campaign management, and digital operations, projects are delivered with high responsiveness and consistent quality.
+                </p>
+              </div>
+            </div>
+
+            <div className="pt-4 mt-6 border-t border-white/5 flex flex-wrap gap-2 text-xs font-mono-num text-neutral-400">
+              <span className="px-3 py-1.5 bg-white/5 border border-white/5 text-neutral-300">Technology &amp; Code</span>
+              <span className="px-3 py-1.5 bg-white/5 border border-white/5 text-neutral-300">Marketing &amp; Growth</span>
+              <span className="px-3 py-1.5 bg-white/5 border border-white/5 text-neutral-300">Content &amp; Editorial</span>
+              <span className="px-3 py-1.5 bg-white/5 border border-white/5 text-neutral-300">Design &amp; Media</span>
+              <span className="px-3 py-1.5 bg-white/5 border border-white/5 text-neutral-300">Operations &amp; Delivery</span>
+            </div>
+          </div>
+        </section>
+
+        {/* 8. HAVE AN IDEA? LET'S BUILD IT. */}
+        <section aria-labelledby="section-have-an-idea" className="p-8 sm:p-12 bg-[#0c0c0f] border-2 border-[#bef264]/40 relative overflow-hidden">
+          <div className="relative z-10">
+            <span className="text-xs font-mono-num text-[#bef264] uppercase tracking-wider block mb-2">
+              COLLABORATE
+            </span>
+            <h2 id="section-have-an-idea" className="text-2xl sm:text-4xl font-extrabold text-white font-syne mb-4">
+              Have an Idea? Let&apos;s Build It.
+            </h2>
+            <p className="text-sm sm:text-base text-neutral-300 font-body max-w-2xl leading-relaxed mb-8">
+              We are open to discussing projects, collaborations, digital marketing campaigns, websites, applications, content pipelines, digital products, and new business ideas. Reach out to Aditya Agrawat and his team to start a conversation.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <button
+                type="button"
+                onClick={onStartProjectClick}
+                className="inline-flex items-center gap-2.5 px-8 py-4 text-xs sm:text-sm font-semibold uppercase tracking-wider text-black bg-[#bef264] hover:bg-[#d9f99d] transition-all cursor-pointer shadow-lg shadow-[#bef264]/10"
+              >
+                <span>Work With Me</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </button>
+
+              <button
+                type="button"
+                onClick={() => onNavigateHome('#contact')}
+                className="inline-flex items-center gap-2 px-6 py-4 text-xs sm:text-sm font-semibold uppercase tracking-wider text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer"
+              >
+                <span>Contact</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+
+            <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-neutral-400 font-mono-num">
+              <div>
+                Direct email:{' '}
+                <a
+                  href={`mailto:${SITE_DATA.contact.email}`}
+                  className="text-white hover:text-[#bef264] transition-colors"
+                >
+                  {SITE_DATA.contact.email}
+                </a>
+              </div>
+              <div>
+                Official website: <span className="text-neutral-300">aditya-agrawat.onrender.com</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Back to Home Link */}
+        <div className="mt-12 text-center">
           <button
             type="button"
-            onClick={() => onNavigateHome('#partnerships')}
-            className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#bef264] hover:underline cursor-pointer"
+            onClick={() => onNavigateHome()}
+            className="inline-flex items-center gap-2 text-xs font-mono-num text-neutral-400 hover:text-white transition-colors cursor-pointer"
           >
-            <span>Explore Partnership Models on Home Page</span>
-            <ArrowUpRight className="w-4 h-4" />
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>Return to Homepage</span>
           </button>
-        </section>
-
-        {/* 10. Contact Aditya Agrawat */}
-        <section className="p-8 sm:p-10 bg-[#0e0e12] border-2 border-[#bef264]/40">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white font-syne mb-3">
-            Contact Aditya Agrawat
-          </h2>
-          <p className="text-sm sm:text-base text-neutral-300 font-body leading-relaxed mb-6">
-            Ready to discuss a digital marketing campaign, web development project, application, or partnership? Reach out directly to Aditya and his team.
-          </p>
-          <div className="flex flex-wrap items-center gap-4">
-            <a
-              href={`mailto:${SITE_DATA.contact.email}?subject=Inquiry%20from%20Profile%20Page%20-%20Aditya%20Agrawat`}
-              className="inline-flex items-center gap-2 px-6 py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-black bg-[#bef264] hover:bg-[#d9f99d] transition-all cursor-pointer"
-            >
-              <Mail className="w-4 h-4" />
-              <span>Email Aditya Directly</span>
-            </a>
-            <button
-              type="button"
-              onClick={onStartProjectClick}
-              className="inline-flex items-center gap-2 px-6 py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer"
-            >
-              <span>Open Project Form</span>
-            </button>
-          </div>
-          <div className="mt-6 text-xs text-neutral-400 font-mono-num">
-            Direct email: <span className="text-white">{SITE_DATA.contact.email}</span>
-          </div>
-        </section>
+        </div>
       </div>
     </article>
   );

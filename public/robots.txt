@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ais-pre-5ijxxoz7iaekh66e6mywd4-19234386464.asia-east1.run.app/sitemap.xml
+Sitemap: https://aditya-agrawat.onrender.com/sitemap.xml
