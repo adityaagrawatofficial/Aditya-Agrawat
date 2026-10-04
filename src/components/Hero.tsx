@@ -96,14 +96,17 @@ export const Hero: React.FC<HeroProps> = ({
                   <span>Explore Partnerships</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
-                <button
-                  type="button"
-                  onClick={onWhoIsAdityaClick}
+                <a
+                  href="/about-aditya-agrawat"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onWhoIsAdityaClick();
+                  }}
                   className="inline-flex items-center gap-1.5 px-3 py-2 text-xs text-neutral-400 hover:text-white transition-colors cursor-pointer ml-auto"
                 >
-                  <span>Who is Aditya?</span>
+                  <span>About Aditya Agrawat</span>
                   <ArrowRight className="w-3 h-3 text-[#bef264]" />
-                </button>
+                </a>
               </div>
             </div>
           </div>

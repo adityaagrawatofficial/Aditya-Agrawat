@@ -316,12 +316,12 @@ export default function App() {
               onExploreWorkClick={() => scrollToSection('work')}
               onStartProjectClick={() => scrollToSection('contact')}
               onExplorePartnershipsClick={() => scrollToSection('partnerships')}
-              onWhoIsAdityaClick={() => scrollToSection('who-is-aditya')}
+              onWhoIsAdityaClick={() => navigate('/about-aditya-agrawat')}
             />
 
             {/* 2. 01 — WHO IS ADITYA AGRAWAT? */}
             <WhoIsAditya
-              onMoreAboutClick={() => scrollToSection('about-aditya')}
+              onMoreAboutClick={() => navigate('/about-aditya-agrawat')}
               onStartProjectClick={() => scrollToSection('contact')}
             />
 

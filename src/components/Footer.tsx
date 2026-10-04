@@ -13,7 +13,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
   const navLinks = [
     { label: 'Home', href: '/', isRoute: true },
-    { label: 'Who is Aditya Agrawat?', href: '/about-aditya-agrawat', isRoute: true },
+    { label: 'About Aditya Agrawat', href: '/about-aditya-agrawat', isRoute: true },
     { label: 'Services', href: '#services', isRoute: false },
     { label: 'Selected Work', href: '#work', isRoute: false },
     { label: 'The 48+ Team', href: '#team', isRoute: false },

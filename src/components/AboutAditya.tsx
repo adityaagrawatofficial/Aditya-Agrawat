@@ -67,14 +67,17 @@ export const AboutAditya: React.FC<AboutAdityaProps> = ({ onLearnMoreClick, onWo
 
               {onLearnMoreClick && (
                 <div className="mt-6 pt-4 border-t border-white/10">
-                  <button
-                    type="button"
-                    onClick={onLearnMoreClick}
+                  <a
+                    href="/about-aditya-agrawat"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onLearnMoreClick();
+                    }}
                     className="inline-flex items-center gap-2 text-xs font-semibold text-[#bef264] hover:underline uppercase tracking-wider cursor-pointer"
                   >
-                    <span>Read Full Profile</span>
+                    <span>About Aditya Agrawat</span>
                     <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                  </a>
                 </div>
               )}
             </div>

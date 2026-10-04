@@ -20,7 +20,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentRoute, onNavigate, onWork
   }, []);
 
   const navLinks = [
-    { label: 'About Aditya', href: '/about-aditya-agrawat', isRoute: true },
+    { label: 'About Aditya Agrawat', href: '/about-aditya-agrawat', isRoute: true },
     { label: 'Services', href: '#services', isRoute: false },
     { label: 'Selected Work', href: '#work', isRoute: false },
     { label: 'Team', href: '#team', isRoute: false },

@@ -101,16 +101,20 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigateHome, onStartPro
   return (
     <article className="pt-32 pb-24 sm:pt-40 sm:pb-32 bg-[#080808] text-[#f4f4f5]">
       <div className="max-w-4xl mx-auto px-6 sm:px-8">
-        {/* Breadcrumb Navigation */}
+        {/* Breadcrumb Navigation with internal SEO link to homepage */}
         <nav aria-label="Breadcrumb" className="mb-10 flex items-center gap-2 text-xs font-mono-num text-neutral-400">
-          <button
-            type="button"
-            onClick={() => onNavigateHome()}
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigateHome();
+            }}
             className="hover:text-[#bef264] transition-colors cursor-pointer flex items-center gap-1.5"
+            title="Return to Aditya Agrawat homepage"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Home</span>
-          </button>
+            <span>Aditya Agrawat</span>
+          </a>
           <span className="text-neutral-600">/</span>
           <span className="text-white">About Aditya Agrawat</span>
         </nav>
@@ -137,22 +141,28 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigateHome, onStartPro
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <button
-                  type="button"
-                  onClick={onStartProjectClick}
+                <a
+                  href="/#contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onStartProjectClick();
+                  }}
                   className="inline-flex items-center gap-2 px-6 py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-black bg-[#bef264] hover:bg-[#d9f99d] transition-all cursor-pointer shadow-lg shadow-[#bef264]/10"
                 >
                   <span>Work With Me</span>
                   <ArrowUpRight className="w-4 h-4" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => onNavigateHome('#work')}
+                </a>
+                <a
+                  href="/#work"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigateHome('#work');
+                  }}
                   className="inline-flex items-center gap-2 px-6 py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer"
                 >
                   <span>Explore My Work</span>
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </a>
               </div>
             </div>
 
@@ -206,7 +216,19 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigateHome, onStartPro
             </p>
 
             <p>
-              Operating with an execution-driven mindset, Aditya combines long-term organic compounding through SEO and content publishing with agile engineering and performance marketing.
+              Operating with an execution-driven mindset,{' '}
+              <a
+                href="/"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigateHome();
+                }}
+                className="text-[#bef264] hover:underline font-medium cursor-pointer"
+                title="Return to Aditya Agrawat main hub"
+              >
+                Aditya Agrawat
+              </a>{' '}
+              combines long-term organic compounding through SEO and content publishing with agile engineering and performance marketing.
             </p>
           </div>
         </section>
@@ -222,7 +244,29 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigateHome, onStartPro
             What I Do
           </h2>
           <p className="text-sm sm:text-base text-neutral-400 font-body mb-8">
-            Aditya leads projects across six fundamental areas of the digital ecosystem:
+            Aditya leads projects across six fundamental areas of the digital ecosystem. You can also explore case studies in{' '}
+            <a
+              href="/#work"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigateHome('#work');
+              }}
+              className="text-[#bef264] hover:underline cursor-pointer"
+            >
+              Selected Work
+            </a>{' '}
+            or connect directly to{' '}
+            <a
+              href="/#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                onStartProjectClick();
+              }}
+              className="text-[#bef264] hover:underline cursor-pointer font-medium"
+            >
+              Work With Me
+            </a>
+            :
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -333,7 +377,18 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigateHome, onStartPro
                   &ldquo;Aditya works with a 48+ member team across different digital, creative and execution-focused roles.&rdquo;
                 </blockquote>
                 <p className="text-xs sm:text-sm text-neutral-300 font-body leading-relaxed">
-                  Great digital work requires diverse technical and creative skills. By coordinating an agile team across frontend and backend development, copywriting, video editing, graphics, campaign management, and digital operations, projects are delivered with high responsiveness and consistent quality.
+                  Great digital work requires diverse technical and creative skills. By coordinating an agile team across frontend and backend development, copywriting, video editing, graphics, campaign management, and digital operations, projects are delivered with high responsiveness and consistent quality. Reach out anytime to{' '}
+                  <a
+                    href="/#contact"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onStartProjectClick();
+                    }}
+                    className="text-[#bef264] hover:underline font-medium cursor-pointer"
+                  >
+                    Contact Aditya Agrawat
+                  </a>{' '}
+                  regarding dedicated project capacity.
                 </p>
               </div>
             </div>
@@ -362,23 +417,29 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigateHome, onStartPro
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
-              <button
-                type="button"
-                onClick={onStartProjectClick}
+              <a
+                href="/#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onStartProjectClick();
+                }}
                 className="inline-flex items-center gap-2.5 px-8 py-4 text-xs sm:text-sm font-semibold uppercase tracking-wider text-black bg-[#bef264] hover:bg-[#d9f99d] transition-all cursor-pointer shadow-lg shadow-[#bef264]/10"
               >
                 <span>Work With Me</span>
                 <ArrowUpRight className="w-4 h-4" />
-              </button>
+              </a>
 
-              <button
-                type="button"
-                onClick={() => onNavigateHome('#contact')}
+              <a
+                href="/#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onStartProjectClick();
+                }}
                 className="inline-flex items-center gap-2 px-6 py-4 text-xs sm:text-sm font-semibold uppercase tracking-wider text-neutral-200 bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer"
               >
-                <span>Contact</span>
+                <span>Contact Aditya Agrawat</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </a>
             </div>
 
             <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-neutral-400 font-mono-num">
@@ -400,14 +461,17 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigateHome, onStartPro
 
         {/* Back to Home Link */}
         <div className="mt-12 text-center">
-          <button
-            type="button"
-            onClick={() => onNavigateHome()}
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigateHome();
+            }}
             className="inline-flex items-center gap-2 text-xs font-mono-num text-neutral-400 hover:text-white transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Return to Homepage</span>
-          </button>
+            <span>Return to Aditya Agrawat Homepage</span>
+          </a>
         </div>
       </div>
     </article>

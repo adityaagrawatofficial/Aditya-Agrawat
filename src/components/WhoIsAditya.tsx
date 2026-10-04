@@ -34,22 +34,28 @@ export const WhoIsAditya: React.FC<WhoIsAdityaProps> = ({ onMoreAboutClick, onSt
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3">
-              <button
-                type="button"
-                onClick={onMoreAboutClick}
+              <a
+                href="/about-aditya-agrawat"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onMoreAboutClick();
+                }}
                 className="group inline-flex items-center justify-center gap-2.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-black bg-[#bef264] hover:bg-[#d9f99d] px-6 py-3.5 transition-all cursor-pointer shadow-md shadow-[#bef264]/10"
               >
-                <span>Read Full Background</span>
+                <span>About Aditya Agrawat</span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
-              </button>
+              </a>
 
-              <button
-                type="button"
-                onClick={onStartProjectClick}
+              <a
+                href="/#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onStartProjectClick();
+                }}
                 className="inline-flex items-center justify-center gap-2 text-xs sm:text-sm font-semibold uppercase tracking-wider text-neutral-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 px-5 py-3.5 transition-all cursor-pointer"
               >
-                <span>Connect With Team</span>
-              </button>
+                <span>Work With Me</span>
+              </a>
             </div>
           </div>
 
